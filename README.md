@@ -5,7 +5,7 @@ template to get started writing a Language Server in Java.
 It provides opinionated way to:
 
 - default to Standard I/O communication
-- have a WebScoket connection using --websocket option
+- have a WebScoket connection using --websocket option using Tyrus, the reference implementation.
 - bundle as a fat jar (using SpringBoot)
 - register opened files
 - use Full sync mode for easier start (impact performance on big files)
