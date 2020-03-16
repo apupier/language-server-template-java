@@ -31,27 +31,30 @@ import org.eclipse.lsp4j.Command;
 import org.eclipse.lsp4j.CompletionItem;
 import org.eclipse.lsp4j.CompletionList;
 import org.eclipse.lsp4j.CompletionParams;
+import org.eclipse.lsp4j.DefinitionParams;
 import org.eclipse.lsp4j.DidChangeTextDocumentParams;
 import org.eclipse.lsp4j.DidCloseTextDocumentParams;
 import org.eclipse.lsp4j.DidOpenTextDocumentParams;
 import org.eclipse.lsp4j.DidSaveTextDocumentParams;
 import org.eclipse.lsp4j.DocumentFormattingParams;
 import org.eclipse.lsp4j.DocumentHighlight;
+import org.eclipse.lsp4j.DocumentHighlightParams;
 import org.eclipse.lsp4j.DocumentOnTypeFormattingParams;
 import org.eclipse.lsp4j.DocumentRangeFormattingParams;
 import org.eclipse.lsp4j.DocumentSymbol;
 import org.eclipse.lsp4j.DocumentSymbolParams;
 import org.eclipse.lsp4j.Hover;
+import org.eclipse.lsp4j.HoverParams;
 import org.eclipse.lsp4j.Location;
 import org.eclipse.lsp4j.LocationLink;
 import org.eclipse.lsp4j.ReferenceParams;
 import org.eclipse.lsp4j.RenameParams;
 import org.eclipse.lsp4j.SignatureHelp;
+import org.eclipse.lsp4j.SignatureHelpParams;
 import org.eclipse.lsp4j.SymbolInformation;
 import org.eclipse.lsp4j.TextDocumentContentChangeEvent;
 import org.eclipse.lsp4j.TextDocumentIdentifier;
 import org.eclipse.lsp4j.TextDocumentItem;
-import org.eclipse.lsp4j.TextDocumentPositionParams;
 import org.eclipse.lsp4j.TextEdit;
 import org.eclipse.lsp4j.WorkspaceEdit;
 import org.eclipse.lsp4j.jsonrpc.messages.Either;
@@ -79,19 +82,19 @@ public class MyTextDocumentService implements TextDocumentService {
 	}
 
 	@Override
-	public CompletableFuture<Hover> hover(TextDocumentPositionParams position) {
-		LOGGER.info("hover: {}", position.getTextDocument());
+	public CompletableFuture<Hover> hover(HoverParams params) {
+		LOGGER.info("hover: {}", params.getTextDocument());
 		return CompletableFuture.completedFuture(null);
 	}
 
 	@Override
-	public CompletableFuture<SignatureHelp> signatureHelp(TextDocumentPositionParams position) {
-		LOGGER.info("signatureHelp: {}", position.getTextDocument());
+	public CompletableFuture<SignatureHelp> signatureHelp(SignatureHelpParams params) {
+		LOGGER.info("signatureHelp: {}", params.getTextDocument());
 		return CompletableFuture.completedFuture(null);
 	}
 
 	@Override
-	public CompletableFuture<Either<List<? extends Location>, List<? extends LocationLink>>> definition(TextDocumentPositionParams params) {
+	public CompletableFuture<Either<List<? extends Location>, List<? extends LocationLink>>> definition(DefinitionParams params) {
 		TextDocumentIdentifier textDocument = params.getTextDocument();
 		LOGGER.info("definition: {}", textDocument);
 		return CompletableFuture.completedFuture(null);
@@ -104,8 +107,8 @@ public class MyTextDocumentService implements TextDocumentService {
 	}
 
 	@Override
-	public CompletableFuture<List<? extends DocumentHighlight>> documentHighlight(TextDocumentPositionParams position) {
-		LOGGER.info("documentHighlight: {}", position.getTextDocument());
+	public CompletableFuture<List<? extends DocumentHighlight>> documentHighlight(DocumentHighlightParams params) {
+		LOGGER.info("documentHighlight: {}", params.getTextDocument());
 		return CompletableFuture.completedFuture(Collections.emptyList());
 	}
 
