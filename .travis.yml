@@ -16,11 +16,7 @@ jobs:
       script:
         - mvn verify
     - stage: test
-      jdk: openjdk12
-      script:
-        - mvn verify
-    - stage: test
-      jdk: openjdk13
+      jdk: openjdk14
       script:
         - mvn verify
 stages:
